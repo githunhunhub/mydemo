@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.mbatis2.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.demo.mbatis2.model.User">
+        <id property="id" column="id"/>
+        <result property="tenantId" column="tenant_id"/>
+        <result property="token" column="token" jdbcType="VARCHAR"/>
+        <result property="nickName" column="nickname"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, tenant_id, token, nickname, avatar
+    </sql>
+
+    <select id="findByName" resultType="com.demo.mbatis2.model.User">
+        SELECT
+          *
+        FROM
+          im_user
+        WHERE
+          nickname like "%${namelike}%"
+    </select>
+
+    <select id="findOne" resultMap="BaseResultMap">
+        SELECT
+          *
+        FROM im_user
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateUser">
+        UPDATE
+          im_user
+        SET
+          token = #{token, jdbcType=VARCHAR},
+          <if test="nickname != null">nickname = #{nickname}</if>
+        WHERE
+          id = #{id}
+    </update>
+
+    <delete id="delUser">
+        DELETE
+        FROM
+          im_user
+        WHERE
+          id = #{id}
+    </delete>
+
+    <insert id="addUser" parameterType="com.demo.mbatis2.model.User">
+        INSERT INTO
+          im_user (<include refid="Base_Column_List"/>)
+        VALUES (#{id}, #{tenantId}, #{token, jdbcType=VARCHAR}, #{nickName}, #{avatar})
+    </insert>
+</mapper>
