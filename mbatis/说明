@@ -1,0 +1,7 @@
+
+完全基于注解的Mybatis
+没有 xml映射文件
+SQL语句直接写在 Mapper上：
+
+    @Insert("INSERT INTO im_user(id, tenant_id, token, nickname, avatar) VALUES (#{id}, #{tenantId}, #{token}, #{nickName}, #{avatar})")
+    void add(User user);
