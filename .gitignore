@@ -9,3 +9,4 @@ target/
 .mvn
 
 .factorypath
+application.properties
