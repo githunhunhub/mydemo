@@ -4,9 +4,14 @@ target/
 .project
 *.epoch
 *.log
-*.iml
-.idea
 .mvn
+.class
 
 .factorypath
 application.properties
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
