@@ -1,4 +1,4 @@
-package com.test.fastJsonApi;
+package com.test.fastjson;
 
 import com.alibaba.fastjson.JSON;
 import com.test.model.User;

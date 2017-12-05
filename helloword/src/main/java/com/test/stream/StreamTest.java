@@ -1,4 +1,4 @@
-package com.test.streamApi;
+package com.test.stream;
 
 import com.test.model.User;
 import org.junit.Test;
